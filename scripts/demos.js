@@ -193,6 +193,25 @@
     if (match && registry[match[1]]) onOpen({ detail: { id: match[1], instant: instant } });
   }
 
+  /* En la primera visita, fuentes e imágenes terminan de cargar después del salto y cambian
+     la altura de lo que hay arriba: se vuelve a alinear #demos, salvo que la persona ya
+     se haya desplazado por su cuenta. */
+  function keepAligned() {
+    if (!/^#demo-/.test(window.location.hash)) return;
+    var moved = false;
+    var stop = function () { moved = true; };
+    ['wheel', 'touchmove', 'keydown', 'mousedown'].forEach(function (type) {
+      window.addEventListener(type, stop, { once: true, passive: true });
+    });
+    var align = function () {
+      if (moved) return;
+      document.getElementById('demos').scrollIntoView({ behavior: 'instant', block: 'start' });
+    };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+    window.addEventListener('load', align, { once: true });
+    [300, 1000, 2500].forEach(function (ms) { setTimeout(align, ms); });
+  }
+
   function init() {
     var section = document.getElementById('demos');
     if (!section || !ids().length) return;
@@ -202,6 +221,7 @@
     document.addEventListener('demo:open', onOpen);
     window.addEventListener('hashchange', function () { openFromHash(false); });
     openFromHash(true);
+    keepAligned();
   }
 
   window.Demos = {
