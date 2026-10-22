@@ -62,7 +62,7 @@
     /* "Ver demo" solo aparece si la demo ya está registrada en scripts/demos/. */
     if (project.demo && window.Demos && window.Demos.has(project.demo)) {
       var demo = el('a', 'btn btn--ghost btn--sm');
-      demo.href = '#demos';
+      demo.href = '#demo-' + project.demo;
       demo.setAttribute('data-demo', project.demo);
       demo.appendChild(el('span', null, 'projects.view_demo'));
       actions.appendChild(demo);
@@ -169,9 +169,10 @@
      (por ejemplo #demos), se vuelve a llevar a la vista para no quedar desplazado. */
   function restoreHashTarget(list) {
     var id = window.location.hash.slice(1);
+    if (/^demo-/.test(id)) id = 'demos';  /* enlace directo a una demo (#demo-<id>) */
     var target = id && document.getElementById(id);
     if (!target || !(list.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING)) return;
-    target.scrollIntoView({ block: 'start' });
+    target.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
   function init() {

@@ -32,7 +32,7 @@
     }).join('');
 
     return '' +
-      '<a class="cp__link" href="#demos" data-demo="chilexpress">' +
+      '<a class="cp__link" href="#demo-chilexpress" data-demo="chilexpress">' +
         '<span class="visually-hidden" data-i18n="experience.chilexpress.demo"></span>' +
         '<span class="cp__scene" aria-hidden="true">' +
           '<span class="cp__bar"><span class="cp__dots"><i></i><i></i><i></i></span><span class="cp__app">API Coach Ejecutivo</span><span class="cp__tag" data-i18n="' + P + 'label"></span></span>' +

@@ -180,9 +180,17 @@
     var section = document.getElementById('demos');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     activate(id, { force: true });
-    section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    /* 'instant' y no 'auto': 'auto' respeta el scroll-behavior: smooth del CSS. */
+    section.scrollIntoView({ behavior: event.detail.instant ? 'instant' : reduce ? 'auto' : 'smooth', block: 'start' });
     document.getElementById('demos-panel').focus({ preventScroll: true });
-    if (history.replaceState) history.replaceState(null, '', '#demos');
+    /* La dirección queda como #demo-<id> para poder compartir el enlace a esa demo. */
+    if (history.replaceState) history.replaceState(null, '', '#demo-' + id);
+  }
+
+  /* Enlaces directos: index.html#demo-integra abre la demo de Avista, etc. */
+  function openFromHash(instant) {
+    var match = window.location.hash.match(/^#demo-([\w-]+)$/);
+    if (match && registry[match[1]]) onOpen({ detail: { id: match[1], instant: instant } });
   }
 
   function init() {
@@ -192,6 +200,8 @@
     build();
     watchVisibility(section);
     document.addEventListener('demo:open', onOpen);
+    window.addEventListener('hashchange', function () { openFromHash(false); });
+    openFromHash(true);
   }
 
   window.Demos = {
