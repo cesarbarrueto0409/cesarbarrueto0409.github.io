@@ -1,0 +1,186 @@
+/* base.css: reset, tipografía y utilidades globales. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Deja espacio para la barra fija al saltar a un ancla. */
+  scroll-padding-top: calc(var(--nav-height) + var(--spacing-16));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-midnight-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  font-weight: var(--font-weight-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Evita que el contenido quede bajo la barra fija. */
+main {
+  display: block;
+  padding-top: var(--nav-height);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-headline);
+}
+
+h1 { font-size: var(--text-display); line-height: var(--leading-display); }
+h2 { font-size: var(--text-heading-lg); line-height: var(--leading-heading-lg); }
+h3 { font-size: var(--text-heading-sm); line-height: var(--leading-heading-sm); letter-spacing: var(--tracking-heading-sm); }
+
+@media (max-width: 599px) {
+  h1 { font-size: 36px; }
+  h2 { font-size: var(--text-heading); line-height: var(--leading-heading); }
+}
+
+p { margin: 0; }
+
+a {
+  color: var(--text-primary);
+  text-decoration-color: var(--border-hairline-strong);
+  text-underline-offset: 3px;
+}
+
+a:hover { color: var(--color-pure-white); }
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Si una imagen no carga, queda un bloque de color sólido del mismo tamaño. */
+img { background-color: var(--color-steel-plate); }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+button { cursor: pointer; }
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: rgba(186, 214, 247, 0.24);
+  color: var(--color-pure-white);
+}
+
+/* Foco visible y consistente en todo el sitio. */
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-badges);
+}
+
+/* Utilidades */
+.container {
+  width: 100%;
+  max-width: calc(var(--page-max-width) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  font-feature-settings: "tnum" on;
+  color: var(--text-muted);
+}
+
+[hidden] { display: none !important; }
+
+.section {
+  padding-block: clamp(72px, 10vw, var(--section-gap));
+}
+
+.section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  margin-bottom: var(--spacing-40);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--spacing-8);
+  left: var(--spacing-8);
+  z-index: 1000;
+  padding: var(--spacing-8) var(--spacing-16);
+  border-radius: var(--radius-buttons);
+  background: var(--color-midnight-canvas);
+  color: var(--color-pure-white);
+  box-shadow: var(--shadow-subtle-9);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* El destino del enlace "Saltar al contenido" no necesita anillo de foco. */
+main:focus,
+main:focus-visible { outline: none; }

@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>César Barrueto Alvarado · Data &amp; AI Engineer</title>
+  <meta name="description" content="Diseño pipelines de datos y oriento modelos de IA y LLMs a problemas reales, en la nube (AWS y Azure). Mi foco está en arquitecturas escalables, con mirada técnica y de negocio." data-i18n-content="meta.description">
+  <meta name="theme-color" content="#05060f">
+
+  <!-- Marca que JS está disponible; sin JS el menú queda siempre visible. -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.2.8/latin-400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.2.8/latin-500.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.2.8/latin-600.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.2.8/latin-400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.2.8/latin-500.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-400.css">
+
+  <!-- ?v= obliga a descargar CSS y JS nuevos tras cada cambio. Actualizar con: python tools/bump_version.py -->
+  <link rel="stylesheet" href="styles/tokens.css?v=20261021-2258">
+  <link rel="stylesheet" href="styles/base.css?v=20261021-2258">
+  <link rel="stylesheet" href="styles/components.css?v=20261021-2258">
+
+  <script src="scripts/i18n.js?v=20261021-2258" defer></script>
+  <script src="scripts/main.js?v=20261021-2258" defer></script>
+  <script src="scripts/demos.js?v=20261021-2258" defer></script>
+  <script src="scripts/demos/chilexpress.js?v=20261021-2258" defer></script>
+  <script src="scripts/demos/integra.js?v=20261021-2258" defer></script>
+  <script src="scripts/demos/polybeauchef.js?v=20261021-2258" defer></script>
+  <script src="scripts/demos/benchmark.js?v=20261021-2258" defer></script>
+  <script src="scripts/demos/segmentation.js?v=20261021-2258" defer></script>
+  <script src="scripts/timeline-fx.js?v=20261021-2258" defer></script>
+  <script src="scripts/stack-fx.js?v=20261021-2258" defer></script>
+  <script src="scripts/coach-preview.js?v=20261021-2258" defer></script>
+  <script src="scripts/projects.js?v=20261021-2258" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido" data-i18n="nav.skip">Saltar al contenido</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal" data-i18n-aria-label="nav.main_label">
+      <a class="nav__brand" href="#inicio">César Barrueto</a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span class="nav__toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__links" role="list">
+          <li><a class="nav__link" href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a class="nav__link" href="#demos" data-i18n="nav.demos">Demos</a></li>
+          <li><a class="nav__link" href="#stack" data-i18n="nav.stack">Stack</a></li>
+          <li><a class="nav__link" href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a class="nav__link" href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+          <li><a class="nav__link" href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+
+        <div class="lang-switch" role="group" aria-label="Cambiar idioma" data-i18n-aria-label="nav.lang_label">
+          <button class="lang-switch__btn" type="button" data-lang="es" lang="es" aria-pressed="true">ES</button>
+          <button class="lang-switch__btn" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- 1. Hero -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__inner container">
+        <div class="hero__text">
+          <p class="eyebrow hero__eyebrow hero__reveal" data-i18n="hero.eyebrow">Ingeniero en Computación · 4° año</p>
+          <h1 class="hero__name hero__reveal" id="hero-title" data-i18n="hero.name">César Barrueto Alvarado</h1>
+          <p class="hero__role hero__reveal" data-i18n="hero.title">Data &amp; AI Engineer</p>
+          <p class="hero__subtitle hero__reveal" data-i18n="hero.subtitle">Diseño pipelines de datos y oriento modelos de IA y LLMs a problemas reales, en la nube (AWS y Azure). Mi foco está en arquitecturas escalables, con mirada técnica y de negocio.</p>
+          <div class="hero__actions hero__reveal">
+            <a class="btn btn--primary" href="#proyectos" data-i18n="hero.cta_projects">Ver proyectos</a>
+            <!-- OCULTO hasta tener el CV corregido (decisión del 21/10/2026: el PDF actual tiene el teléfono y cifras distintas a las del sitio).
+                 Para reactivarlo, quitar este comentario:
+            <a class="btn btn--ghost" href="assets/docs/cv-cesar-barrueto.pdf" download data-i18n="hero.cta_cv">Descargar CV</a> -->
+            <a class="btn btn--outline" href="#contacto" data-i18n="hero.cta_contact">Contactar</a>
+          </div>
+        </div>
+
+        <div class="hero__photo hero__reveal">
+          <img src="assets/img/hero.webp" width="800" height="1000" alt="Retrato de César Barrueto" data-i18n-alt="hero.photo_alt" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Proyectos -->
+    <section class="section projects" id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section__header projects__header">
+          <h2 id="projects-title" data-i18n="projects.title">Proyectos</h2>
+
+          <div class="projects__filters" role="group" aria-label="Filtrar proyectos" data-i18n-aria-label="projects.filter_label" hidden>
+            <button class="chip" type="button" data-filter="all" aria-pressed="true" data-i18n="projects.filter_all">Todos</button>
+            <button class="chip" type="button" data-filter="data" aria-pressed="false" data-i18n="projects.filter_data">Data &amp; IA</button>
+            <button class="chip" type="button" data-filter="web" aria-pressed="false" data-i18n="projects.filter_web">Full stack / Web</button>
+          </div>
+        </div>
+
+        <!-- projects.js reemplaza esta lista con las tarjetas de data/projects.json.
+             Si JS o el JSON fallan, esta versión estática sigue visible. -->
+        <ul class="projects__grid" id="projects-list" role="list">
+          <li class="projects__item">
+            <article class="project-card">
+              <h3 class="project-card__title"><span class="project-card__name">API Coach Ejecutivo</span> <span class="project-card__subtitle" data-i18n="projects.card.chilexpress.subtitle">para Chilexpress S.A.</span></h3>
+              <p class="project-card__problem" data-i18n="projects.card.chilexpress.problem">Reducir el tiempo de investigación de mercados y clientes para el equipo comercial.</p>
+              <p class="project-card__metric" data-i18n="projects.card.chilexpress.metric">Meta de forecast alcanzada en hasta un 35&nbsp;% menos tiempo que el año anterior</p>
+              <div class="project-card__actions"><a class="btn btn--outline btn--sm" href="https://github.com/cesarbarrueto0409/APICoachEjecutivo" target="_blank" rel="noopener"><span data-i18n="projects.code">Código</span><span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span></a></div>
+            </article>
+          </li>
+          <li class="projects__item">
+            <article class="project-card">
+              <h3 class="project-card__title"><span class="project-card__name">Avista</span> <span class="project-card__subtitle" data-i18n="projects.card.integra.subtitle">para Fundación Integra</span></h3>
+              <p class="project-card__problem" data-i18n="projects.card.integra.problem">Reducir el tiempo administrativo de las educadoras al registrar observaciones de los niños.</p>
+              <p class="project-card__metric" data-i18n="projects.card.integra.metric">Carga administrativa semanal reducida de 4 horas a 0</p>
+              <div class="project-card__actions"><a class="btn btn--outline btn--sm" href="https://github.com/Poclins/Avista" target="_blank" rel="noopener"><span data-i18n="projects.team_repo">Repositorio del equipo</span><span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span></a></div>
+            </article>
+          </li>
+          <li class="projects__item">
+            <article class="project-card">
+              <h3 class="project-card__title"><span class="project-card__name">PolyBeauchef</span></h3>
+              <p class="project-card__problem" data-i18n="projects.card.polybeauchef.problem">Mercados de predicción para eventos de la comunidad Beauchef, como la Copa de la Mona, con fichas ficticias.</p>
+              <p class="project-card__metric" data-i18n="projects.card.polybeauchef.metric">Plataforma funcional de mercados de predicción con precios automáticos, racha diaria y ranking de la comunidad</p>
+              <div class="project-card__actions"><a class="btn btn--outline btn--sm" href="https://github.com/cesarbarrueto0409/polybuxef" target="_blank" rel="noopener"><span data-i18n="projects.code">Código</span><span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span></a></div>
+            </article>
+          </li>
+          <li class="projects__item">
+            <article class="project-card">
+              <h3 class="project-card__title"><span class="project-card__name">CloudArena</span> <span class="project-card__subtitle" data-i18n="projects.card.benchmark.subtitle">Chat comparativo multicloud</span></h3>
+              <p class="project-card__problem" data-i18n="projects.card.benchmark.problem">Comparar, lado a lado, cómo responden al mismo mensaje dos modelos de IA del mismo nivel, servidos desde dos nubes.</p>
+              <p class="project-card__metric" data-i18n="projects.card.benchmark.metric">Dos modelos de IA respondiendo en paralelo al mismo mensaje, comparables lado a lado y con todo el historial guardado</p>
+              <div class="project-card__actions"><a class="btn btn--outline btn--sm" href="https://github.com/cesarbarrueto0409/CloudArena" target="_blank" rel="noopener"><span data-i18n="projects.code">Código</span><span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span></a></div>
+            </article>
+          </li>
+          <li class="projects__item is-center">
+            <article class="project-card">
+              <h3 class="project-card__title"><span class="project-card__name" data-i18n="projects.card.segmentation.title">Segmentación de clientes con Machine Learning</span></h3>
+              <p class="project-card__problem" data-i18n="projects.card.segmentation.problem">Segmentar clientes con datos de campaña de marketing para entender sus perfiles de compra.</p>
+              <p class="project-card__metric" data-i18n="projects.card.segmentation.metric">6 perfiles de clientes identificados y ≈&nbsp;92&nbsp;% de acierto al anticipar quién comprará más vino</p>
+              <div class="project-card__actions"><a class="btn btn--outline btn--sm" href="https://github.com/cesarbarrueto0409/proyecto-MachineLearning" target="_blank" rel="noopener"><span data-i18n="projects.code">Código</span><span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span></a></div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Demos -->
+    <section class="section demos" id="demos" aria-labelledby="demos-title">
+      <div class="container">
+        <div class="section__header demos__header">
+          <div class="demos__intro">
+            <h2 id="demos-title" data-i18n="demos.title">Demos interactivas</h2>
+            <p class="section__lead" data-i18n="demos.intro">Simulaciones con datos de ejemplo. Pruébalas aquí mismo.</p>
+          </div>
+          <p class="demo-badge" data-i18n="demo.label">Demo simulada · datos de ejemplo</p>
+        </div>
+
+        <p class="demos__nojs" data-i18n="demos.nojs">Las demos necesitan JavaScript activado.</p>
+
+        <!-- demos.js crea las pestañas según las demos registradas en scripts/demos/. -->
+        <div class="demos__selector">
+          <div class="demos__tabs" role="tablist" aria-label="Elegir demo" data-i18n-aria-label="demos.tabs_label"></div>
+          <div class="demos__select field">
+            <label class="field__label" for="demos-select" data-i18n="demos.tabs_label">Elegir demo</label>
+            <select class="select" id="demos-select"></select>
+          </div>
+        </div>
+
+        <div class="demos__panel" id="demos-panel" role="tabpanel" tabindex="-1"></div>
+      </div>
+    </section>
+
+    <!-- 4. Stack -->
+    <section class="section stack" id="stack" aria-labelledby="stack-title">
+      <div class="container">
+        <div class="section__header">
+          <div>
+            <h2 id="stack-title" data-i18n="stack.title">Stack</h2>
+            <p class="section__lead" data-i18n="stack.lead">Herramientas que uso en mis proyectos de datos e IA.</p>
+          </div>
+        </div>
+
+        <!-- Logos en assets/icons/ (svg-logos de Iconify, Devicon, AWS Architecture Icons y kiro.dev).
+             alt vacío: el nombre visible debajo ya identifica cada herramienta. -->
+        <div class="stack__grid">
+          <section class="stack__group stack__group--data" aria-labelledby="stack-data">
+            <h3 class="stack__title" id="stack-data" data-i18n="stack.data.label">Datos</h3>
+            <ul class="stack__list" role="list">
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/python.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Python</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/pandas.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">pandas</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/spark.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Apache Spark</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/postgresql.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">PostgreSQL</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/mongodb.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">MongoDB</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/powerbi.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Power BI</span></li>
+            </ul>
+          </section>
+          <section class="stack__group stack__group--ai" aria-labelledby="stack-ai">
+            <h3 class="stack__title" id="stack-ai" data-i18n="stack.ai.label">IA y Machine Learning</h3>
+            <ul class="stack__list" role="list">
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/scikit-learn.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">scikit-learn</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/bedrock.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Amazon Bedrock</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/azure-openai.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Azure OpenAI</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/copilot-studio.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Copilot Studio</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/claude.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Claude Code</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/kiro.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Kiro</span></li>
+            </ul>
+          </section>
+          <section class="stack__group stack__group--backend" aria-labelledby="stack-backend">
+            <h3 class="stack__title" id="stack-backend" data-i18n="stack.backend.label">Backend y web</h3>
+            <ul class="stack__list" role="list">
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/fastapi.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">FastAPI</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/django.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Django</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/redis.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Redis</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/postman.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Postman</span></li>
+            </ul>
+          </section>
+          <section class="stack__group stack__group--cloud" aria-labelledby="stack-cloud">
+            <h3 class="stack__title" id="stack-cloud" data-i18n="stack.cloud.label">Cloud y DevOps</h3>
+            <ul class="stack__list" role="list">
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/aws.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">AWS</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/azure.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Microsoft Azure</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/docker.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">Docker</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/github.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">GitHub</span></li>
+              <li class="stack__item"><img class="stack__logo" src="assets/icons/github-actions.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="stack__name">GitHub Actions</span></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Sobre mí -->
+    <section class="section about" id="sobre-mi" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="about-title" data-i18n="about.title">Sobre mí</h2>
+        </div>
+
+        <div class="about__layout">
+          <!-- Izquierda: perfil profesional (desde el LinkedIn de César, con cifras verificadas) -->
+          <div class="about__main">
+            <p class="about__hook" data-i18n="about.hook">¿Pasar de horas a minutos en un análisis operativo? No es magia: es ingeniería de datos e IA bien aplicada.</p>
+            <p class="about__body" data-i18n="about.intro">Soy César, estudiante de 4° año de Ingeniería Civil en Computación en la Universidad de Chile, con minor en Data Science. Me especializo en desarrollo backend y automatización con IA: diseño arquitecturas escalables y pipelines que resuelven problemas de negocio reales.</p>
+
+            <h3 class="about__subtitle" data-i18n="about.impact_title">Mi impacto reciente</h3>
+            <ul class="about__impact" role="list">
+              <li>
+                <svg class="about__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg>
+                <span data-i18n="about.impact_1">Lideré la integración de LLMs en la nube (AWS) para Chilexpress: la investigación de mercados pasó de 2–4 horas a 10 minutos y la meta de forecast se alcanzó en hasta un 35&nbsp;% menos tiempo.</span>
+              </li>
+              <li>
+                <svg class="about__icon about__icon--star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"></path></svg>
+                <span data-i18n="about.impact_2">Reconocido como Estudiante Destacado de la Universidad de Chile (2025–2026) por excelencia académica.</span>
+              </li>
+            </ul>
+
+            <p class="about__looking" data-i18n="about.looking">Hoy busco mi segunda práctica profesional en automatización con IA o desarrollo de software, idealmente en minería, banca o empresas internacionales.</p>
+          </div>
+
+          <!-- Derecha: fotos y cosas personales. Fotos optimizadas desde assets/img (el nombre visible en la pantalla de la hackathon está difuminado). -->
+          <aside class="about__personal" aria-labelledby="about-personal-title">
+            <div class="about__photos">
+              <figure class="about__photo about__photo--wide">
+                <img src="assets/img/about-hackathon.webp" width="1200" height="800" loading="lazy" decoding="async" alt="César presentando Avista con un micrófono frente a la pantalla, en la Hackathon AWS Breaking Barriers 2026" data-i18n-alt="about.photo_talk_alt">
+                <figcaption><span data-i18n="about.photo_talk_caption">Presentando Avista · AWS Breaking Barriers 2026</span> <a class="about__link" href="#demos" data-open-demo="integra" data-i18n="about.hackathon_demo">Ver demo</a></figcaption>
+              </figure>
+              <figure class="about__photo about__photo--tall">
+                <img src="assets/img/about-aws.webp" width="720" height="900" loading="lazy" decoding="async" alt="César sonriendo con una caja de AWS y la credencial de la Hackathon AWS Breaking Barriers 2026" data-i18n-alt="about.photo_aws_alt">
+                <figcaption data-i18n="about.photo_aws_caption">Hackathon AWS Breaking Barriers 2026 · Top 6</figcaption>
+              </figure>
+            </div>
+
+            <div class="about__facts-card">
+              <h3 class="about__facts-title" id="about-personal-title" data-i18n="about.personal_title">Más allá del código</h3>
+              <ul class="about__facts" role="list">
+                <li>
+                  <svg class="about__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c.6-3 2.8-5 5.5-5s4.9 2 5.5 5"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M15.5 14.2c2.3.2 4 1.9 4.5 4.8"></path></svg>
+                  <span data-i18n="about.fact_community">Miembro activo del CADCC++, en el área de Género y Diversidad.</span>
+                </li>
+                <li>
+                  <svg class="about__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="5" r="2.2"></circle><circle cx="5" cy="18" r="2.2"></circle><circle cx="19" cy="18" r="2.2"></circle><path d="M11 7 6 16M13 7l5 9M7.2 18h9.6"></path></svg>
+                  <span data-i18n="about.fact_redes">Organizador y coordinador de eventos en Redes Beauchef.</span>
+                </li>
+                <li>
+                  <svg class="about__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 18V5l11-2v13"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="17.5" cy="16" r="2.5"></circle></svg>
+                  <span data-i18n="about.fact_sing">Me encanta cantar.</span>
+                </li>
+                <li>
+                  <svg class="about__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z"></path><path d="M12 6v13.5"></path></svg>
+                  <span data-i18n="about.fact_read">Lector constante. Ahora estoy leyendo Amanecer en la cosecha, de la saga Los juegos del hambre.</span>
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Experiencia y formación -->
+    <section class="section experience" id="experiencia" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section__header">
+          <div>
+            <h2 id="experience-title" data-i18n="experience.title">Experiencia y formación</h2>
+            <p class="section__lead" data-i18n="experience.lead">Experiencia profesional y académica, de la más reciente a la más antigua.</p>
+          </div>
+        </div>
+
+        <div class="experience__layout">
+        <ol class="timeline" role="list">
+          <li class="timeline__item">
+            <article class="timeline__card">
+              <p class="timeline__dates" data-i18n="experience.chilexpress.dates">01/2026 – 02/2026</p>
+              <h3 class="timeline__role" data-i18n="experience.chilexpress.role">Ingeniero de Automatización, IA y Control de Procesos</h3>
+              <p class="timeline__org">Chilexpress</p>
+              <p class="timeline__body" data-i18n="experience.chilexpress.body">Diseñé e implementé APIs REST con FastAPI en AWS, integrando IA generativa para automatizar procesos críticos. Reduje el tiempo de investigación de mercados de 2–4 horas a 10 minutos (reducción de 92&nbsp;% a 96&nbsp;%).</p>
+              <a class="timeline__link" href="#demos" data-open-demo="chilexpress" data-i18n="experience.chilexpress.demo">Ver demo del API Coach Ejecutivo</a>
+            </article>
+          </li>
+          <li class="timeline__item">
+            <article class="timeline__card">
+              <p class="timeline__dates" data-i18n="experience.udechile_ta.dates">08/2025 – 12/2025</p>
+              <h3 class="timeline__role" data-i18n="experience.udechile_ta.role">Asistente de Docencia</h3>
+              <p class="timeline__org" data-i18n="experience.udechile_ta.company">Universidad de Chile</p>
+              <p class="timeline__body" data-i18n="experience.udechile_ta.body">Lideré mentorías técnicas en arquitectura de software y calidad de código, con pruebas de QA.</p>
+            </article>
+          </li>
+          <li class="timeline__item">
+            <article class="timeline__card">
+              <p class="timeline__dates" data-i18n="experience.udechile_ml.dates">07/2024 – 12/2024</p>
+              <h3 class="timeline__role" data-i18n="experience.udechile_ml.role">Analista de datos con Machine Learning</h3>
+              <p class="timeline__org" data-i18n="experience.udechile_ml.company">Universidad de Chile</p>
+              <p class="timeline__body" data-i18n="experience.udechile_ml.body">Construí pipelines end-to-end con Python y SQL, y modelos de K-Means y KNN para segmentar datos. Alcancé ≈&nbsp;92&nbsp;% de precisión predictiva (validación cruzada).</p>
+              <a class="timeline__link" href="#demos" data-open-demo="segmentation" data-i18n="experience.udechile_ml.demo">Ver demo de segmentación</a>
+            </article>
+          </li>
+        </ol>
+
+        <aside class="experience__aside" aria-label="Resumen" data-i18n-aria-label="experience.aside_label">
+          <section class="exp-panel" aria-labelledby="exp-edu-title">
+            <h3 class="exp-panel__title" id="exp-edu-title" data-i18n="experience.education_label">Formación</h3>
+            <p class="exp-edu__degree" data-i18n="experience.edu_degree">Ingeniería Civil en Computación</p>
+            <p class="exp-edu__school"><span data-i18n="experience.edu_school">Universidad de Chile</span> · <span data-i18n="experience.edu_dates">03/2023 – actualidad</span></p>
+            <p class="exp-edu__honor"><svg class="exp-edu__honor-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"></path></svg><span data-i18n="experience.edu_honor">Estudiante destacado · 2025–2026</span></p>
+            <p class="exp-edu__minor" data-i18n="experience.edu_minor">Minor en Data Science (diciembre 2026)</p>
+          </section>
+
+          <section class="exp-panel" aria-labelledby="exp-hl-title">
+            <h3 class="exp-panel__title" id="exp-hl-title" data-i18n="experience.highlights_title">Logros destacados</h3>
+            <dl class="exp-stats">
+              <div class="exp-stat">
+                <dt data-i18n="experience.hl_time_label">Investigación de mercados · Chilexpress</dt>
+                <dd data-i18n="experience.hl_time">2–4 h → 10 min</dd>
+              </div>
+              <div class="exp-stat">
+                <dt data-i18n="experience.hl_forecast_label">Menos tiempo para alcanzar la meta de forecast · Chilexpress</dt>
+                <dd data-i18n="experience.hl_forecast">35&nbsp;%</dd>
+              </div>
+              <div class="exp-stat">
+                <dt data-i18n="experience.hl_hackathon_label">Entre los mejores proyectos · Hackathon AWS Breaking Barriers 2026, Chile (Avista)</dt>
+                <dd data-i18n="experience.hl_hackathon">Top 6</dd>
+              </div>
+            </dl>
+          </section>
+
+          <!-- OCULTO hasta tener el CV corregido (ver el comentario del hero). Para reactivarlo, quitar este comentario:
+          <a class="btn btn--ghost exp-cv" href="assets/docs/cv-cesar-barrueto.pdf" download data-i18n="experience.download">Descargar CV (PDF)</a> -->
+        </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Contacto (sin teléfono: decisión del 20/10/2026) -->
+    <section class="section contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container contact__inner">
+        <h2 id="contact-title" data-i18n="contact.title">¿Qué proceso de tu equipo podría tardar minutos en vez de horas?</h2>
+        <p class="section__lead contact__body" data-i18n="contact.body">En Chilexpress llevé la investigación de mercados de 2–4 horas a 10 minutos con IA generativa, y con Avista eliminamos las 4 horas semanales de registro de las educadoras. Escríbeme y vemos qué podemos automatizar.</p>
+
+        <ul class="contact__links" role="list" aria-label="Enlaces de contacto" data-i18n-aria-label="contact.links_label">
+          <li>
+            <a class="contact__link" href="mailto:barrueto.ignacio.10@gmail.com">
+              <svg class="contact__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6.5 8.5-6.5"></path></svg>
+              <span class="contact__label" data-i18n="contact.email_label">Correo</span>
+              <span class="contact__value">barrueto.ignacio.10@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact__link" href="https://www.linkedin.com/in/cesarbarruetoa/" target="_blank" rel="noopener">
+              <svg class="contact__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10.5V17M8 7.25v.01M12 17v-6.5M12 13.5c0-1.7 1.1-3 2.6-3S17 11.6 17 13.3V17"></path></svg>
+              <span class="contact__label">LinkedIn</span>
+              <span class="contact__value">linkedin.com/in/cesarbarruetoa</span>
+              <span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact__link" href="https://github.com/cesarbarrueto0409" target="_blank" rel="noopener">
+              <svg class="contact__icon contact__icon--fill" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+              <span class="contact__label">GitHub</span>
+              <span class="contact__value">github.com/cesarbarrueto0409</span>
+              <span class="visually-hidden" data-i18n="common.new_tab">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" aria-label="Pie de página" data-i18n-aria-label="footer.label">
+    <div class="container site-footer__inner">
+      <p class="site-footer__name">César Barrueto Alvarado · 2026</p>
+      <p class="site-footer__note" data-i18n="footer.note">Las demos son simulaciones con datos de ejemplo.</p>
+      <a class="site-footer__top" href="#inicio" data-i18n="footer.back_to_top">Volver arriba</a>
+    </div>
+  </footer>
+</body>
+</html>
