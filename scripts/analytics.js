@@ -40,7 +40,7 @@
     /* Descargar CV */
     var href = el.getAttribute('href') || '';
     if (/cv-cesar-barrueto\.pdf$/.test(href)) {
-      track('cv_download', { place: el.closest('#inicio') ? 'hero' : 'experience' });
+      track('cv_download', { place: el.closest('#inicio') ? 'hero' : el.closest('#contacto') ? 'contact' : 'experience' });
       return;
     }
 

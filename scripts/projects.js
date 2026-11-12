@@ -1,12 +1,8 @@
-/* projects.js: grilla de proyectos desde data/projects.json y filtros por categoría.
+/* projects.js: tabla de proyectos desde data/projects.json (filas con detalle desplegable) y filtros.
    Si el JSON o los textos no cargan, queda visible la lista estática del HTML. */
 (function () {
   'use strict';
 
-  var CATEGORY_KEYS = {
-    data: 'projects.filter_data',
-    web: 'projects.filter_web'
-  };
   var HIDE_MS = 150;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -18,50 +14,64 @@
   }
 
   function newTabHint() {
-    var hint = el('span', 'visually-hidden', 'common.new_tab');
-    return hint;
+    return el('span', 'visually-hidden', 'common.new_tab');
   }
 
-  function renderCard(project) {
-    var li = el('li', 'projects__item');
+  var PIPELINE = ['mongo', 'memory', 'bedrock', 'validation', 'similarity', 'email'];
+
+  /* Fila de la tabla: índice, nombre, resultado corto, stack y acción. El nombre es un botón
+     que despliega el detalle (problema, cifra completa, enlaces y, en el Coach, el pipeline diario). */
+  function renderRow(project, index) {
+    var li = el('li', 'prow');
     li.setAttribute('data-categories', project.categories.join(' '));
+    var hasDemo = project.demo && window.Demos && window.Demos.has(project.demo);
+    var detailId = 'project-' + project.id + '-detail';
 
-    var card = el('article', 'project-card');
-    var titleId = 'project-' + project.id + '-title';
-    card.setAttribute('aria-labelledby', titleId);
+    var main = el('div', 'prow__main');
+    var idx = el('span', 'prow__idx');
+    idx.textContent = (index + 1 < 10 ? '0' : '') + (index + 1);
 
-    var category = el('p', 'project-card__category');
-    project.categories.forEach(function (cat, i) {
-      if (i > 0) category.appendChild(document.createTextNode(' · '));
-      category.appendChild(el('span', null, CATEGORY_KEYS[cat]));
-    });
-
-    var title = el('h3', 'project-card__title');
-    title.id = titleId;
-    var name = el('span', 'project-card__name', project.nameKey);
+    var title = el('h3', 'prow__name');
+    var toggle = el('button', 'prow__toggle');
+    toggle.type = 'button';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', detailId);
+    var name = el('span', null, project.shortKey || project.nameKey);
     if (project.name) name.textContent = project.name;
-    title.appendChild(name);
-    if (project.subtitleKey) {
-      title.appendChild(el('span', 'project-card__subtitle', project.subtitleKey));
+    toggle.appendChild(name);
+    if (project.subtitleKey) toggle.appendChild(el('small', null, project.subtitleKey));
+    title.appendChild(toggle);
+
+    var result = el('p', 'prow__result', project.resultKey);
+    var stack = el('p', 'prow__stack');
+    stack.textContent = project.stack.join(' · ');
+
+    var go;
+    if (hasDemo) {
+      go = el('a', 'prow__go');
+      go.href = '#demo-' + project.demo;
+      go.setAttribute('data-demo', project.demo);
+      go.appendChild(el('span', 'prow__go-icon'));
+      go.appendChild(el('span', null, index === 0 ? 'projects.run_demo' : 'projects.demo_short'));
+    } else {
+      go = el('span', 'prow__go');
     }
 
-    var problem = el('p', 'project-card__problem', project.problemKey);
+    main.appendChild(idx);
+    main.appendChild(title);
+    main.appendChild(result);
+    main.appendChild(stack);
+    main.appendChild(go);
 
-    var stack = el('ul', 'tags');
-    stack.setAttribute('role', 'list');
-    stack.setAttribute('data-i18n-aria-label', 'projects.stack_label');
-    project.stack.forEach(function (tech) {
-      var tag = el('li', 'tag');
-      tag.textContent = tech;
-      stack.appendChild(tag);
-    });
-
-    var metric = el('p', 'project-card__metric', project.metricKey);
-
-    var actions = el('div', 'project-card__actions');
-    /* "Ver demo" solo aparece si la demo ya está registrada en scripts/demos/. */
-    if (project.demo && window.Demos && window.Demos.has(project.demo)) {
-      var demo = el('a', 'btn btn--ghost btn--sm');
+    var detail = el('div', 'prow__detail');
+    detail.id = detailId;
+    var inner = el('div', 'prow__detail-inner');
+    var left = el('div', 'prow__detail-text');
+    left.appendChild(el('p', 'prow__problem', project.problemKey));
+    left.appendChild(el('p', 'prow__metric', project.metricKey));
+    var actions = el('p', 'prow__actions');
+    if (hasDemo) {
+      var demo = el('a', 'btn btn--primary btn--sm');
       demo.href = '#demo-' + project.demo;
       demo.setAttribute('data-demo', project.demo);
       demo.appendChild(el('span', null, 'projects.view_demo'));
@@ -76,55 +86,55 @@
       code.appendChild(newTabHint());
       actions.appendChild(code);
     }
+    left.appendChild(actions);
+    inner.appendChild(left);
 
-    card.appendChild(category);
-    card.appendChild(title);
-    card.appendChild(problem);
-    card.appendChild(stack);
-    card.appendChild(metric);
-
-    /* Animación de vista previa (solo si su script cargó y la demo existe). */
-    if (project.preview === 'coach' && window.CoachPreview && window.Demos && window.Demos.has(project.demo)) {
-      var preview = el('div', 'project-card__preview');
-      card.classList.add('project-card--preview');
-      li.setAttribute('data-preview', '');
-      card.appendChild(preview);
-      window.CoachPreview.mount(preview);
+    if (project.preview === 'coach') {
+      var fig = el('div', 'prow__pipe');
+      fig.appendChild(el('p', 'label', 'projects.pipeline_label'));
+      var steps = el('ol', 'pipe');
+      steps.setAttribute('role', 'list');
+      PIPELINE.forEach(function (step, i) {
+        var item = el('li', 'pipe__step' + (step === 'bedrock' ? ' is-hot' : ''), 'demo.chilexpress.step.' + step);
+        item.style.setProperty('--i', i);
+        steps.appendChild(item);
+      });
+      fig.appendChild(steps);
+      inner.appendChild(fig);
     }
+    detail.appendChild(inner);
 
-    card.appendChild(actions);
-    li.appendChild(card);
+    toggle.addEventListener('click', function () {
+      setOpen(li, toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    li.appendChild(main);
+    li.appendChild(detail);
     return li;
+  }
+
+  function setOpen(li, open) {
+    var toggle = li.querySelector('.prow__toggle');
+    toggle.setAttribute('aria-expanded', String(open));
+    li.classList.toggle('is-open', open);
   }
 
   function render(list, projects) {
     var fragment = document.createDocumentFragment();
-    projects.forEach(function (project) { fragment.appendChild(renderCard(project)); });
+    projects.forEach(function (project, i) { fragment.appendChild(renderRow(project, i)); });
     list.replaceChildren(fragment);
     window.i18n.apply(list);
-    updateWide(Array.prototype.slice.call(list.children));
-  }
-
-  /* Grilla de 2 columnas con tarjetas impares: si la primera visible tiene animación, ocupa todo
-     el ancho (texto a la izquierda, animación a la derecha). Si no, la última queda centrada sola. */
-  function updateWide(visible) {
-    var items = visible.length ? visible[0].parentNode.querySelectorAll('.projects__item') : [];
-    items.forEach(function (item) { item.classList.remove('is-wide', 'is-center'); });
-    if (visible.length % 2 === 0) return;
-    if (visible[0].hasAttribute('data-preview')) visible[0].classList.add('is-wide');
-    else visible[visible.length - 1].classList.add('is-center');
+    /* La primera fila (el proyecto con más impacto) parte abierta, como en el diseño. */
+    if (list.firstElementChild) setOpen(list.firstElementChild, true);
   }
 
   /* ---------- Filtros ---------- */
 
   function applyFilter(list, filter) {
-    var items = list.querySelectorAll('.projects__item');
-    var visible = [];
+    var items = list.querySelectorAll('.prow');
     items.forEach(function (item) {
       var cats = (item.getAttribute('data-categories') || '').split(' ');
       var show = filter === 'all' || cats.indexOf(filter) !== -1;
-      if (show) visible.push(item);
-
       clearTimeout(item._hideTimer);
       if (show) {
         item.hidden = false;
@@ -139,7 +149,6 @@
         item._hideTimer = setTimeout(function () { item.hidden = true; }, HIDE_MS);
       }
     });
-    updateWide(visible);
   }
 
   function initFilters(list) {

@@ -1,0 +1,172 @@
+/* motion.css: animaciones del rediseño Premium (propuesta 10/11/2026).
+   Todo vive bajo html.motion, que motion.js agrega solo si no hay prefers-reduced-motion.
+   Sin JS o con movimiento reducido, la página se ve completa y estática. */
+
+:root {
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-reveal: 1100ms;
+}
+
+/* Lenis (scroll suave) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* ---------- 1. Entrada del hero ---------- */
+
+.motion .hero__line { overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+.motion .hero__line > .ln { display: inline-block; transform: translateY(105%); transition: transform 1300ms var(--ease-premium); }
+.motion .hero__line:nth-child(2) > .ln { transition-delay: 120ms; }
+.motion.is-loaded .hero__line > .ln { transform: none; }
+
+.motion [data-intro] { opacity: 0; transform: translateY(18px); transition: opacity 900ms var(--ease-premium), transform 900ms var(--ease-premium); transition-delay: calc(500ms + var(--i, 0) * 90ms); }
+.motion.is-loaded [data-intro] { opacity: 1; transform: none; }
+
+.motion .hero__photo img { clip-path: inset(100% 0 0 0); transition: clip-path 1400ms var(--ease-in-out) 250ms; }
+.motion.is-loaded .hero__photo img { clip-path: inset(0 0 0 0); }
+.motion .hero__photo::after { clip-path: inset(0 100% 100% 0); transition: clip-path 1200ms var(--ease-in-out) 1100ms; }
+.motion.is-loaded .hero__photo::after { clip-path: inset(0 0 0 0); }
+
+/* ---------- 3. Barra de progreso y navegación ---------- */
+
+.scroll-progress { position: fixed; inset: 0 0 auto 0; z-index: 120; height: 1px; background: var(--gold); transform-origin: 0 50%; transform: scaleX(var(--progress, 0)); pointer-events: none; }
+.motion .site-header { transition: transform 600ms var(--ease-premium); }
+.motion .site-header.is-hidden { transform: translateY(-100%); }
+
+.nav__indicator { position: absolute; bottom: 0; left: 0; height: 1px; width: 0; background: var(--gold); transition: transform 600ms var(--ease-premium), width 600ms var(--ease-premium), opacity 300ms ease; opacity: 0; pointer-events: none; }
+.motion .nav__links { position: relative; }
+.motion .nav__link[aria-current] { box-shadow: none; }
+@media (max-width: 859px) { .nav__indicator { display: none; } }
+
+/* ---------- 4. Títulos por palabra ---------- */
+
+.motion .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.motion .w > i { display: inline-block; font-style: inherit; transform: translateY(110%); transition: transform var(--t-reveal) var(--ease-premium); transition-delay: calc(var(--wi, 0) * 45ms); }
+.motion .is-in .w > i,
+.motion .is-in.w > i { transform: none; }
+.motion .sec-num { opacity: 0; transition: opacity 800ms ease 500ms; }
+.motion .is-in .sec-num { opacity: 1; }
+
+/* ---------- 5. Aparición general y líneas que se dibujan ---------- */
+
+.motion [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 1000ms var(--ease-premium), transform 1000ms var(--ease-premium); transition-delay: calc(var(--d, 0) * 70ms); }
+.motion [data-reveal].is-in { opacity: 1; transform: none; }
+
+.motion [data-wipe] { clip-path: inset(0 100% 0 0); transition: clip-path 1400ms var(--ease-in-out); }
+.motion [data-wipe].is-in { clip-path: inset(0 0 0 0); }
+
+/* ---------- 6. Cifras ---------- */
+
+.motion .metric__bar { transform: scaleX(0); transform-origin: 0 50%; transition: transform 1200ms var(--ease-premium) 300ms; }
+.motion .metric__bar--now { transition-delay: 900ms; }
+.motion .is-in .metric__bar { transform: none; }
+.metric__n .num { font-variant-numeric: tabular-nums; }
+
+/* ---------- 7. Proyectos ---------- */
+
+.motion .prow__name small,
+.motion .prow__toggle > span:first-child { transition: transform 600ms var(--ease-premium), color 300ms ease; display: inline-block; }
+.motion .prow__name small { display: block; }
+.motion .prow:hover .prow__toggle > span:first-child { transform: translateX(10px); }
+.motion .prow:hover .prow__name small { transform: translateX(10px); }
+.motion .prow { position: relative; }
+.motion .prow::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: 0 50%; transition: transform 800ms var(--ease-premium); pointer-events: none; }
+.motion .prow:hover::after { transform: scaleX(1); }
+.motion .prow__go-icon::before { display: inline-block; transition: transform 500ms var(--ease-premium); }
+.motion .prow:hover .prow__go-icon::before { transform: translateX(5px); }
+
+.motion .pipe__step { transition: background-color 350ms ease, border-color 350ms ease, color 350ms ease, box-shadow 350ms ease; }
+.motion .pipe.is-running .pipe__step.is-hot { background: transparent; border-color: var(--hair-2); color: var(--ink); }
+.motion .pipe.is-running .pipe__step.is-lit { background: var(--gold); border-color: var(--gold); color: var(--bg); box-shadow: 0 0 0 4px rgba(201, 168, 106, 0.15); }
+.motion .pipe.is-running .pipe__step.is-done { border-color: rgba(201, 168, 106, 0.6); color: var(--gold); }
+.motion .pipe__step + .pipe__step::before { transform-origin: 0 50%; transition: transform 400ms var(--ease-premium), background-color 300ms ease; }
+.motion .pipe.is-running .pipe__step.is-lit::before,
+.motion .pipe.is-running .pipe__step.is-done::before { background: var(--gold); }
+
+/* ---------- 9. Botones magnéticos con relleno ---------- */
+
+.motion .btn { position: relative; isolation: isolate; overflow: hidden; transition: transform 500ms var(--ease-premium), color 450ms var(--ease-premium), box-shadow 450ms ease; }
+.motion .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ink); transform: translateY(101%); transition: transform 550ms var(--ease-premium); }
+.motion .btn--primary::before { background: var(--gold); }
+@media (hover: hover) {
+  .motion .btn:hover::before { transform: none; }
+  .motion .btn--outline:hover,
+  .motion .btn--ghost:hover { color: var(--bg); }
+  .motion .btn--primary:hover { background: var(--ink); }
+  .motion .btn--primary:hover .btn__arrow { color: var(--bg); }
+}
+.motion .btn > * { position: relative; }
+
+/* ---------- 10. Fotos con parallax ---------- */
+
+.motion .about__photo img { transform: scale(1.1) translateY(var(--py, 0px)); transition: filter 700ms var(--ease-premium), transform 200ms linear; will-change: transform; }
+
+/* ---------- 11. Laboratorio ---------- */
+
+.motion .demos__host:not([hidden]) { animation: lab-in 650ms var(--ease-premium) both; }
+@keyframes lab-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.lab-indicator { position: absolute; left: 0; top: 0; width: 2px; background: var(--gold); transition: transform 550ms var(--ease-premium), height 550ms var(--ease-premium); pointer-events: none; }
+.motion .lab > .demos__selector .demos__tabs { position: relative; }
+.motion .lab > .demos__selector .demos__tab[aria-selected="true"] { box-shadow: none; }
+.motion .lab > .demos__selector .demos__tab { transition: background-color 400ms ease, color 300ms ease, padding 500ms var(--ease-premium); }
+@media (hover: hover) { .motion .lab > .demos__selector .demos__tab:hover { padding-left: 24px; } }
+
+/* ---------- 12. Stack ---------- */
+
+.motion .mx .sq { transform: scale(0); transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1); transition-delay: calc(var(--c, 0) * 90ms + var(--r, 0) * 25ms); }
+.motion .mx.is-in .sq { transform: none; }
+.mx td.is-col, .mx th.is-col { background: rgba(201, 168, 106, 0.06); }
+.mx thead th.is-col { color: var(--gold); }
+.motion .mx td, .motion .mx th { transition: background-color 250ms ease, color 250ms ease; }
+
+/* ---------- 13. Trayectoria ---------- */
+
+.motion .tl::before { transform-origin: 50% 0; transform: scaleY(var(--tl, 0)); background: var(--gold); }
+.motion .tl::after { content: ""; position: absolute; left: 20px; top: 34px; bottom: 34px; width: 1px; background: var(--hair-2); z-index: -1; }
+.motion .tl { isolation: isolate; }
+.motion .tl__item::before { transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 400ms ease, border-color 400ms ease; transform: scale(0.4); }
+.motion .tl__item.is-passed::before { transform: none; }
+.motion .impact__bar::after { transform: scaleX(0); transform-origin: 0 50%; transition: transform 1400ms var(--ease-premium) 300ms; }
+.motion .impact.is-in .impact__bar::after { transform: none; }
+
+/* ---------- 14. Contacto ---------- */
+
+.contact__box { position: relative; isolation: isolate; }
+.motion .contact__box::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(201, 168, 106, 0.12), transparent 70%); opacity: 0; transition: opacity 500ms ease; pointer-events: none; }
+.motion .contact__box:hover::before { opacity: 1; }
+.motion .contact__value { background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 1px no-repeat; transition: background-size 600ms var(--ease-premium); padding-bottom: 2px; }
+.motion .contact__links a:hover .contact__value { background-size: 100% 1px; }
+.motion .contact__ar { transition: transform 500ms var(--ease-premium); }
+.motion .contact__links a:hover .contact__ar { transform: translate(3px, -3px); }
+
+/* ---------- 15. Táctil ---------- */
+
+.motion .btn:active,
+.motion .prow__toggle:active,
+.motion .demos__tab:active,
+.motion .contact__links a:active,
+.motion .chip:active { transform: scale(0.97); transition-duration: 120ms; }
+
+/* Guía de la propuesta (solo en la vista previa) */
+.guide-toggle { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 150; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 16px; border: 1px solid rgba(201, 168, 106, 0.6); background: rgba(18, 17, 14, 0.92); color: var(--ink); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; }
+.guide-toggle b { color: var(--gold); font-weight: 400; }
+.guide { position: fixed; top: 0; right: 0; bottom: 0; z-index: 160; width: min(420px, 100%); padding: calc(20px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)) 20px; overflow-y: auto; background: #12110E; border-left: 1px solid var(--hair-2); box-shadow: -30px 0 60px rgba(0, 0, 0, 0.5); transform: translateX(105%); transition: transform 600ms var(--ease-premium); }
+.guide.is-open { transform: none; }
+.guide__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.guide__title { font-family: var(--font-display); font-size: 34px; line-height: 1; color: var(--ink); }
+.guide__close { min-width: 40px; min-height: 40px; border: 1px solid var(--hair-2); background: none; color: var(--ink); font-size: 18px; cursor: pointer; }
+.guide__intro { margin-top: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.guide__switches { display: grid; gap: 8px; margin-top: 16px; padding: 12px 0; border-block: 1px solid var(--hair); }
+.guide__switch { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--ink); }
+.guide__switch input { width: 18px; height: 18px; accent-color: #C9A86A; }
+.guide__list { list-style: none; margin: 8px 0 0; padding: 0; counter-reset: g; }
+.guide__item { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 4px 10px; padding: 14px 0; border-bottom: 1px solid var(--hair); counter-increment: g; }
+.guide__item::before { content: counter(g, decimal-leading-zero); font-family: var(--font-mono); font-size: 11px; color: var(--gold); padding-top: 3px; }
+.guide__item h3 { grid-column: 2; font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--ink); }
+.guide__item p { grid-column: 2; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.guide__item .where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.guide__go { grid-row: 1; grid-column: 3; align-self: start; padding: 6px 10px; border: 1px solid var(--hair-2); background: none; color: var(--ink); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+.guide__go:hover { border-color: var(--gold); color: var(--gold); }
+.guide-flash { outline: 1px solid var(--gold); outline-offset: 8px; transition: outline-color 1200ms ease; }

@@ -140,8 +140,8 @@
     tablist.addEventListener('keydown', function (event) {
       var current = list.indexOf(state.active);
       var next = null;
-      if (event.key === 'ArrowRight') next = (current + 1) % list.length;
-      else if (event.key === 'ArrowLeft') next = (current - 1 + list.length) % list.length;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % list.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + list.length) % list.length;
       else if (event.key === 'Home') next = 0;
       else if (event.key === 'End') next = list.length - 1;
       if (next === null) return;

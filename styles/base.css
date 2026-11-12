@@ -41,7 +41,7 @@ main {
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   color: var(--text-headline);
 }
 
@@ -73,7 +73,7 @@ video {
 }
 
 /* Si una imagen no carga, queda un bloque de color sólido del mismo tamaño. */
-img { background-color: var(--color-steel-plate); }
+img { background-color: var(--bg-2); }
 
 button,
 input,
@@ -94,7 +94,7 @@ ol[role="list"] {
 }
 
 ::selection {
-  background: rgba(186, 214, 247, 0.24);
+  background: rgba(201, 168, 106, 0.35);
   color: var(--color-pure-white);
 }
 

@@ -1,59 +1,60 @@
-/* tokens.css: variables de DESIGN.md (AuthKit, tema oscuro).
-   Los valores se copian tal cual de DESIGN.md. Las fuentes usan los
-   sustitutos indicados ahí (Inter, Space Grotesk, JetBrains Mono). */
+/* tokens.css: sistema visual "Premium" (rediseño del 10/11/2026, ver DESIGN.md).
+   Negro cálido, marfil y champagne. Instrument Serif para títulos y cifras, Geist para texto,
+   Geist Mono para etiquetas técnicas. Los nombres de variables antiguos se conservan para que
+   las demos (components.css) tomen la nueva paleta sin reescribirlas. */
 
 :root {
   color-scheme: dark;
 
   /* Colores */
-  --color-midnight-canvas: #05060f;
-  --color-steel-plate: #2f343e;
-  --color-fog-veil: #9da7ba;
-  --color-moon-mist: #c7d3ea;
-  --color-frost-glow: #d1e4fa;
-  --color-ice-highlight: #d8ecf8;
-  --gradient-ice-highlight: linear-gradient(0deg, #d8ecf8 0%, #98c0ef 100%);
-  --color-pure-white: #ffffff;
-  --color-void-violet: #663af3;
-  --color-blueprint-blue: #b6d9fc;
-  --color-ember-glow: #e46d4c;
-  --color-signal-blue: #027dea;
-  --color-deep-teal: #269684;
-  --color-gridline-blue: #3f4959;
-  --color-glass-edge: #bad7f71f;
-  --color-luminous-fill: #c7d3ea1f;
+  --color-midnight-canvas: #0E0D0B;
+  --color-steel-plate: #2A2721;
+  --color-fog-veil: #8E877A;
+  --color-moon-mist: #BDB6A8;
+  --color-frost-glow: #E4DED2;
+  --color-ice-highlight: #EEE8DC;
+  --gradient-ice-highlight: linear-gradient(0deg, #EEE8DC 0%, #C9A86A 100%);
+  --color-pure-white: #FBF8F1;
+  --color-void-violet: #EEE8DC;
+  --color-blueprint-blue: #C9A86A;
+  --color-ember-glow: #D07F5C;
+  --color-signal-blue: #C9A86A;
+  --color-deep-teal: #93AE8C;
+  --color-gridline-blue: #36322B;
+  --color-glass-edge: rgba(238, 232, 220, 0.12);
+  --color-luminous-fill: rgba(238, 232, 220, 0.06);
 
   /* Superficies */
-  --surface-midnight-canvas: #05060f;
+  --surface-midnight-canvas: #0E0D0B;
   /* DESIGN.md dice #2f343 (hex inválido); se usa #2f343e de la tabla de colores. */
-  --surface-steel-plate: #2f343e;
-  --surface-frosted-glass: #bad6f708;
-  --surface-deep-glass: #05060ff7;
+  --surface-steel-plate: #2A2721;
+  --surface-frosted-glass: #12110E;
+  --surface-deep-glass: rgba(14, 13, 11, 0.97);
 
   /* Roles semánticos (Agent Prompt Guide de DESIGN.md) */
   --text-headline: var(--color-ice-highlight);
   --text-primary: var(--color-frost-glow);
   --text-muted: var(--color-moon-mist);
   --text-helper: var(--color-fog-veil);
-  --border-hairline: rgba(186, 215, 247, 0.12);
-  --border-hairline-strong: rgba(186, 215, 247, 0.24);
-  --fill-frost: rgba(186, 214, 247, 0.06);
-  --fill-frost-hover: rgba(186, 214, 247, 0.12);
-  --grid-line: rgba(186, 215, 247, 0.06);
+  --border-hairline: rgba(238, 232, 220, 0.11);
+  --border-hairline-strong: rgba(238, 232, 220, 0.24);
+  --fill-frost: rgba(238, 232, 220, 0.04);
+  --fill-frost-hover: rgba(238, 232, 220, 0.08);
+  --grid-line: rgba(238, 232, 220, 0.05);
   --focus-ring: var(--color-frost-glow);
 
   /* Gráficos de las demos. Acentos de demo de DESIGN.md (Ember Glow y Signal Blue),
      un paso más oscuros para quedar en la banda de luminosidad validada para fondo oscuro
      (validate_palette.js, modo dark, superficie #05060f: todo PASS). */
   --chart-actual: var(--color-frost-glow);
-  --chart-old: #dc6646;
-  --chart-new: #2f92e8;
-  --chart-band: rgba(47, 146, 232, 0.18);
+  --chart-old: #8E877A;
+  --chart-new: #C9A86A;
+  --chart-band: rgba(201, 168, 106, 0.16);
 
   /* Tipografía: familias */
-  --font-untitled-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-aeonikpro: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-dotdigital: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-untitled-sans: 'Geist Sans', 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-aeonikpro: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --font-dotdigital: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-body: var(--font-untitled-sans);
   --font-display: var(--font-aeonikpro);
   --font-mono: var(--font-dotdigital);
@@ -83,7 +84,7 @@
   --text-display: 48px;
   --leading-display: 1.17;
   --tracking-display: 0px;
-  --text-eyebrow: 15px;
+  --text-eyebrow: 11px;
   --tracking-eyebrow: 0.1em;
 
   /* Tipografía: pesos */
@@ -110,7 +111,7 @@
   --spacing-200: 200px;
 
   /* Layout */
-  --page-max-width: 1200px;
+  --page-max-width: 1280px;
   --section-gap: 120px;
   --card-padding: 24px;
   --element-gap: 16px;
@@ -119,46 +120,59 @@
   --nav-breakpoint: 860px; /* referencia: las media queries usan el valor literal */
 
   /* Radios */
-  --radius-sm: 2px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
-  --radius-2xl: 16px;
-  --radius-3xl: 24px;
-  --radius-3xl-2: 28px;
-  --radius-3xl-3: 44px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-3xl-2: 0;
+  --radius-3xl-3: 0;
   --radius-full: 999px;
   --radius-full-2: 4999.5px;
   --radius-full-3: 9999px;
 
-  --radius-cards: 16px;
-  --radius-badges: 6px;
-  --radius-inputs: 6px;
-  --radius-modals: 16px;
-  --radius-buttons: 999px;
+  --radius-cards: 0;
+  --radius-badges: 0;
+  --radius-inputs: 0;
+  --radius-modals: 0;
+  --radius-buttons: 0;
   --radius-iconcontainers: 9999px;
 
   /* Sombras */
-  --shadow-sm: rgba(186, 207, 247, 0.32) 0px 0px 6px 0px;
-  --shadow-md: rgba(238, 186, 247, 0.24) 0px 0px 12px 0px;
-  --shadow-subtle: rgba(186, 215, 247, 0.12) 0px 0px 0px 1px inset;
-  --shadow-subtle-2: rgba(199, 211, 234, 0.12) -0.5px 0.5px 1px 0px inset, rgba(186, 215, 247, 0.08) 0px 0px 96px 0px inset;
-  --shadow-subtle-3: rgba(186, 214, 247, 0.06) 0px 0px 0px 1px inset;
-  --shadow-subtle-4: rgba(199, 211, 234, 0.12) 0px 1px 1px 0px inset, rgba(199, 211, 234, 0.05) 0px 24px 48px 0px inset, rgba(6, 6, 14, 0.7) 0px 24px 32px 0px;
-  --shadow-subtle-5: rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  --shadow-subtle-6: rgba(216, 236, 248, 0.2) 0px 1px 1px 0px inset, rgba(168, 216, 245, 0.06) 0px 24px 48px 0px inset, rgba(0, 0, 0, 0.3) 0px 16px 32px 0px;
-  --shadow-subtle-7: rgba(216, 236, 248, 0.2) 0px 1px 1px 0px inset, rgba(168, 216, 245, 0.06) 0px 24px 48px 0px inset;
-  --shadow-subtle-8: rgba(216, 236, 248, 0.2) 0px 1px 1px 0px inset, rgba(168, 216, 245, 0.06) 0px 24px 48px 0px inset, rgba(199, 211, 234, 0.08) 0px 0px 0px 1px inset;
-  --shadow-subtle-9: rgba(186, 214, 247, 0.24) 0px 0px 0px 1px inset;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-subtle: inset 0 0 0 1px rgba(238, 232, 220, 0.12);
+  --shadow-subtle-2: inset 0 0 0 1px rgba(238, 232, 220, 0.10);
+  --shadow-subtle-3: inset 0 0 0 1px rgba(238, 232, 220, 0.08);
+  --shadow-subtle-4: inset 0 0 0 1px rgba(238, 232, 220, 0.14);
+  --shadow-subtle-5: inset 0 0 0 1px rgba(238, 232, 220, 0.14);
+  --shadow-subtle-6: inset 0 0 0 1px rgba(238, 232, 220, 0.14);
+  --shadow-subtle-7: inset 0 0 0 1px rgba(238, 232, 220, 0.14);
+  --shadow-subtle-8: inset 0 0 0 1px rgba(238, 232, 220, 0.14);
+  --shadow-subtle-9: inset 0 0 0 1px rgba(201, 168, 106, 0.55);
 
   /* Elevación (DESIGN.md › Elevation) */
-  --elevation-card: inset 0 1px 1px rgba(199, 211, 234, 0.12), inset 0 24px 48px rgba(199, 211, 234, 0.05), 0 24px 32px rgba(6, 6, 14, 0.7);
-  --elevation-modal: inset 0 1px 1px rgba(216, 236, 248, 0.2), inset 0 24px 48px rgba(168, 216, 245, 0.06), 0 16px 32px rgba(0, 0, 0, 0.3);
-  --elevation-glow: 0 0 6px rgba(186, 207, 247, 0.32), 0 0 12px rgba(238, 186, 247, 0.24);
+  --elevation-card: none;
+  --elevation-modal: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  --elevation-glow: none;
 
   /* Movimiento */
+  /* Premium: superficies y acentos con nombre propio */
+  --bg: #0E0D0B;
+  --bg-2: #12110E;
+  --bg-3: #17150F;
+  --ink: #EEE8DC;
+  --ink-2: #BDB6A8;
+  --ink-3: #8E877A;
+  --gold: #C9A86A;
+  --gold-soft: rgba(201, 168, 106, 0.18);
+  --hair: rgba(238, 232, 220, 0.10);
+  --hair-2: rgba(238, 232, 220, 0.22);
+  --label-tracking: 0.14em;
+
   --duration-fast: 150ms;
   --duration-base: 250ms;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 600px) {
