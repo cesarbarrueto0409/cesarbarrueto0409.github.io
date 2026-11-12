@@ -62,6 +62,17 @@ html.lenis, html.lenis body { height: auto; }
 .motion .metric__bar { transform: scaleX(0); transform-origin: 0 50%; transition: transform 1200ms var(--ease-premium) 300ms; }
 .motion .metric__bar--now { transition-delay: 900ms; }
 .motion .is-in .metric__bar { transform: none; }
+.motion .metric__sq i, .motion .metric__sq b { opacity: 0; transform: scale(0.4); transition: opacity 400ms var(--ease-premium), transform 500ms var(--ease-premium); }
+.motion .is-in .metric__sq i, .motion .is-in .metric__sq b { opacity: 1; transform: none; }
+.motion .metric__sq > :nth-child(1) { transition-delay: 300ms; }
+.motion .metric__sq > :nth-child(2) { transition-delay: 380ms; }
+.motion .metric__sq > :nth-child(3) { transition-delay: 460ms; }
+.motion .metric__sq > :nth-child(4) { transition-delay: 540ms; }
+.motion .metric__sq > :nth-child(5) { transition-delay: 620ms; }
+.motion .metric__sq > :nth-child(6) { transition-delay: 700ms; }
+.motion .metric__sq > :nth-child(7) { transition-delay: 860ms; }
+.motion .metric__sq > :nth-child(8) { transition-delay: 920ms; }
+.motion .metric__sq > :nth-child(9) { transition-delay: 980ms; }
 .metric__n .num { font-variant-numeric: tabular-nums; }
 
 /* ---------- 7. Proyectos ---------- */
